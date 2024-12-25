@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Finamite</title>
+    <style>
+        /* Reset and Basic Styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Background Images */
+        .background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .background-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            filter: blur(8px);
+            transition: opacity 1s ease-in-out;
+        }
+
+        .background-container img.hidden {
+            opacity: 0;
+        }
+
+        /* Login Container */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        /* Login Box */
+        .login-box {
+            background: rgba(120, 125, 125, 0.7);
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* Logo */
+        .logo img {
+            width: 180px;
+            height:60px;
+            margin-bottom: 20px;
+        }
+
+        /* Heading */
+        h2 {
+            margin: 10px 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* Input Fields */
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Remember Me */
+        .remember-me {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .remember-me input {
+            margin-right: 5px;
+        }
+
+        /* Button */
+        .login-btn {
+            background: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #0056b3;
+        }
+
+        /* Footer */
+        footer p {
+            font-size: 12px;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        /* Error message */
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 400px) {
+            .login-box {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .logo img {
+                width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Images -->
+    <div class="background-container">
+        <img src="https://external-preview.redd.it/-YWdkFQ6BljhSwhJFct5OfbPHu78GT8UpPp2wZbCywc.jpg?auto=webp&s=e456ce207cc504f29a593aab97a1f2c57d6fd006" alt="Background 1" class="background-image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY0dgqFzrRWxHMYL8UvVvpWeG2wpEgR_xfyQ&s" alt="Background 2" class="background-image hidden">
+        <img src="https://t3.ftcdn.net/jpg/05/35/47/38/360_F_535473874_OWCa2ohzXXNZgqnlzF9QETsnbrSO9pFS.jpg" alt="Background 3" class="background-image hidden">
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="https://i.postimg.cc/Ghdbv71D/Logo.jpg" alt="Finamite Logo">
+            </div>
+            <h2>Login to your account</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <p id="error-message" class="error-message"></p>
+            <footer>
+                <p>2024 Finamite - CRM Software.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Define your login credentials
+            const username = "Finamite134"; // Replace with your username
+            const password = "12345678"; // Replace with your password
+            
+            // Get input values
+            const inputUsername = document.getElementById("username").value;
+            const inputPassword = document.getElementById("password").value;
+            
+            // Validate credentials
+            if (inputUsername === username && inputPassword === password) {
+                // Redirect to the desired page after successful login
+                window.location.href = "https://docs.google.com/spreadsheets/d/1GFQERruJgbikISLGEmt8MA8BHYtNyCew9Z0wsmLo-ek/edit?usp=sharing"; // Replace with your page URL
+            } else {
+                // Show error message
+                document.getElementById("error-message").innerText = "Invalid username or password.";
+            }
+        });
+
+        // Background Image Slider
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll(".background-container img");
+        const totalImages = images.length;
+
+        function changeBackgroundImage() {
+            images[currentImageIndex].classList.add("hidden");
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+            images[currentImageIndex].classList.remove("hidden");
+        }
+
+        setInterval(changeBackgroundImage, 5000); // Change image every 5 seconds
+    </script>
+</body>
+</html>
